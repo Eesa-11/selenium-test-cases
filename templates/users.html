@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users List</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .nav { background: #333; padding: 15px; margin-bottom: 30px; }
+        .nav a { color: white; text-decoration: none; margin: 0 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #333; color: white; }
+        .delete-btn { background: red; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/users">Users</a>
+        <a href="/add_user">Add User</a>
+        <a href="/products">Products</a>
+        <a href="/add_product">Add Product</a>
+        <a href="/search_user">Search User</a>
+    </div>
+    <h1>Users List</h1>
+    <table id="users-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr class="user-row">
+                <td>{{ user.id }}</td>
+                <td class="user-name">{{ user.name }}</td>
+                <td class="user-email">{{ user.email }}</td>
+                <td>{{ user.age }}</td>
+                <td><a href="/delete_user/{{ user.id }}" class="delete-btn">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

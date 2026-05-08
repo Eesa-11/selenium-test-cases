@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search User</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .nav { background: #333; padding: 15px; margin-bottom: 30px; }
+        .nav a { color: white; text-decoration: none; margin: 0 15px; }
+        form { max-width: 500px; margin-bottom: 30px; }
+        input, button { width: 100%; padding: 10px; margin: 10px 0; font-size: 16px; }
+        button { background: #333; color: white; border: none; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #333; color: white; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/users">Users</a>
+        <a href="/add_user">Add User</a>
+        <a href="/products">Products</a>
+        <a href="/add_product">Add Product</a>
+        <a href="/search_user">Search User</a>
+    </div>
+    <h1>Search User</h1>
+    <form method="POST" id="search-form">
+        <input type="text" name="search" id="search-input" placeholder="Enter name to search" required>
+        <button type="submit" id="search-btn">Search</button>
+    </form>
+    
+    {% if results %}
+    <h2>Search Results:</h2>
+    <table id="search-results">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in results %}
+            <tr class="result-row">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.age }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</body>
+</html>
